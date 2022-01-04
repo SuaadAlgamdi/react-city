@@ -155,6 +155,17 @@ function App() {
       else console.log(error)
     }
   }
+  
+
+const citySearch = e => {
+  e.preventDefault()
+  const form = e.target
+  const searchText = form.elements.citySearch.value
+  const cityFound = cities.find(city => city.name === searchText)
+  if (cityFound) return navigate(`/city/${cityFound._id}`)
+  toast.error("not found")
+}
+
 
   useEffect(() => {
     getCities()
@@ -178,6 +189,7 @@ function App() {
     addComment,
     deleteComment,
     likeCity,
+    citySearch
   }
 
   return (
